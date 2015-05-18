@@ -84,8 +84,10 @@ class AdultSpec extends Specification {
             def result = offerDetails.checkStatus()
 
         then:
-            2 * statusChecker(_) >> ['error', 'success']
-            result == 'succes'
+            2 * statusChecker.checkStatus(_ as OfferDetails) >>> ['error', 'success']
+            result == 'success'
     }
+
+
 
 }
